@@ -27,7 +27,7 @@ public class Test {
         String serie = "1,2,#,3,#,#,4,5,#,#,6,7,#,#,#";
         TreeNode node = TreeNode.unserializePreOrder(serie);
         if (node != null)
-            System.out.println(node.serilaizePreeOrder().equals(serie));
+            System.out.println(node.serilaizePreOrder().equals(serie));
         System.out.println();
     }
 

@@ -13,8 +13,7 @@ public class TreeNode {
     public TreeNode right;
     private static int idx = 0;
 
-    public TreeNode() {
-    }
+    public TreeNode() { }
 
     public TreeNode(int val) {
         this.val = val;
@@ -26,6 +25,34 @@ public class TreeNode {
         this.right = right;
     }
 
+
+
+    /**
+     * 先序序列化二叉树
+     * @return 序列化结果
+     */
+    public String serilaizePreOrder() {
+        StringBuilder serie = new StringBuilder();
+        createSerie(this, serie);
+        serie.deleteCharAt(0);
+        return serie.toString();
+    }
+
+    private void createSerie(TreeNode node, StringBuilder serie) {
+        if(node == null) {
+            serie.append(",#");
+            return;
+        }
+        serie.append(",").append(node.val);
+        createSerie(node.left, serie);
+        createSerie(node.right, serie);
+    }
+
+    /**
+     * 将先序序列化的二叉树反序列化
+     * @param preOrder 先序序列化，空节点以"#"代替，节点间用","分割
+     * @return 反序列化的二叉树
+     */
     public static TreeNode unserializePreOrder(String preOrder) {
         if(!isValidSerialization(preOrder)){
             System.out.println("输入序列不和规范");
@@ -66,23 +93,6 @@ public class TreeNode {
                 return false;
         }
         return true;
-    }
-
-    public String serilaizePreeOrder() {
-        StringBuilder serie = new StringBuilder();
-        createSerie(this, serie);
-        serie.deleteCharAt(0);
-        return serie.toString();
-    }
-
-    private void createSerie(TreeNode node, StringBuilder serie) {
-        if(node == null) {
-            serie.append(",#");
-            return;
-        }
-        serie.append(",").append(node.val);
-        createSerie(node.left, serie);
-        createSerie(node.right, serie);
     }
 
     public List<TreeNode> preOrder() {
