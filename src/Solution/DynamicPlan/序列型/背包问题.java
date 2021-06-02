@@ -1,9 +1,6 @@
-package Solution.DynamicPlan;
+package Solution.DynamicPlan.序列型;
 
 import org.junit.Test;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * https://www.lintcode.com/problem/backpack    背包问题

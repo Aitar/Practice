@@ -1,4 +1,4 @@
-package Solution.DynamicPlan;
+package Solution.DynamicPlan.序列型;
 
 import org.junit.Test;
 

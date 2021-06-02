@@ -1,4 +1,4 @@
-package Solution.DynamicPlan;
+package Solution.DynamicPlan.坐标型;
 
 import org.junit.Test;
 
