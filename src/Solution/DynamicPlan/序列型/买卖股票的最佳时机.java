@@ -6,8 +6,10 @@ import org.junit.Test;
  * https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/        买卖股票的最佳时机
  * https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/     买卖股票的最佳时机II
  * https://www.lintcode.com/problem/151                                     买卖股票的最佳时机III
+ * https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/     买卖股票的最佳时机IV
  *
  * 所有的股票买卖以及其类似问题，都只需要做出2k + 1中状态（k为可买卖次数）即可
+ * 属于单向转换型的DP问题
  */
 public class 买卖股票的最佳时机 {
 
