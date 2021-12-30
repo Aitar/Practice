@@ -12,32 +12,37 @@ import java.util.Arrays;
  */
 public class 最长子序列问题 {
     /**
+     * 2021.12.17
      * 最长上升子序列问题
-     * https://leetcode-cn.com/problems/longest-increasing-subsequence/
-     * 思路：求以第 i 个数字结尾的最长上升子序列是多少？
-     *      找到前 i - 1 个数字中的结尾数字小于nums[i]且长度最大的数字即可
+     * https://leetcode-cn.com/problems/longest-increasing-subsequence/submissions/
+     * LS：前n个序列最长上升子序列长度为x
+     *     那么前 n-1 序列的最长上升序列为多少？
+     * SQ：若最后一个元素加入的最长上升子序列，则前n-1个的最长上升子序列长为x-1
+     *      若未加入，则长为x
+     *      子问题出现了！
+     * MF：令f(i)为前 i 个序列的最长上升子序列长度，则有：
+     *      f(i) = max{f(j)} + 1
+     *       0 <= j < i-1 and a[i - 1] > a[j]
+     * B：f(0) = 0
      */
-    public int longestIncreasingSubsequence(int[] nums) {
-        if(nums.length == 0) return 0;
-        int[] dp = new int[nums.length];
-        int ans = 0;
-        for(int i = 1; i < nums.length; i++) {
-            int max = -1;
-            for(int j = i - 1; j >= 0; j--) {
-                if(nums[i] > nums[j] && max < dp[j])
-                    max = dp[j];
+    public int lengthOfLIS(int[] nums) {
+        int[] dp = new int[nums.length + 1];
+        int max = 0;
+        for (int i = 1; i <= nums.length; i++) {
+            for (int j = i - 1; j > 0; j--) {
+                if (dp[i] < dp[j] && nums[i - 1] > nums[j - 1])
+                    dp[i] = dp[j];
             }
-            dp[i] = max + 1;
-            ans = Math.max(ans, dp[i]);
+            dp[i]++;
+            max = Math.max(dp[i], max);
         }
-
-        return ans + 1;
+        return max;
     }
 
     @Test
     public void testLIS() {
         int[] arr = {10,9,2,5,3,7,101,18};
-        System.out.println(longestIncreasingSubsequence(arr));
+        System.out.println(lengthOfLIS(arr));
     }
 
 

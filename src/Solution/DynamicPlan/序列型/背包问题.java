@@ -68,15 +68,25 @@ public class 背包问题 {
         int[][] dp = new int[A.length + 1][m + 1];
 
         for(int i = 1; i <= A.length; i++) {
-            for (int j = 1; j <= m; j++) {
+            for (int j = 0; j <= m; j++) {
                 for(int k = 0; k * A[i - 1] <= j; k++) {
-                    dp[i][j] = Math.max(dp[i][j], dp[i][j - k * A[i - 1]] + k * V[i - 1]);
+                    dp[i][j] = Math.max(dp[i][j], dp[i - 1][j - k * A[i - 1]] + k * V[i - 1]);
                 }
-                ans = Math.max(ans, dp[i][j]);
+                if (i == A.length)
+                    ans = Math.max(ans, dp[i][j]);
             }
         }
 
         return ans;
+    }
+
+    @Test
+    public void test3() {
+        int[] A = {1,3,5,7};
+        int[] V = {1,5,2,4};
+        int m = 10;
+        int i = backPackIII(A, V, m);
+        System.out.println(i);
     }
 
     /**
@@ -124,11 +134,5 @@ public class 背包问题 {
         return dp[nums.length][target];
     }
 
-    @Test
-    public void test3() {
-        int[] A = {1,3,5,7};
-        int[] V = {1,5,2,4};
-        int m = 10;
-        int i = backPackIII(A, V, m);
-    }
+
 }

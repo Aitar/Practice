@@ -44,6 +44,7 @@ public class 抄书 {
     public void test() {
         int[] pages = {3, 2, 5, 5, 6, 2, 3, 8, 3};
         int k = 3;
+
         System.out.println(copyBooks(pages, k));
     }
 }
